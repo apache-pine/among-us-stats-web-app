@@ -1,0 +1,11 @@
+{% if data %}
+<h1>Stats</h1>
+<ul>
+  {% for item in data %}
+  <li>{{ item }}</li>
+  {% endfor %}
+</ul>
+{% else %}
+<h1>Stats</h1>
+<h1>Data unknown</h1>
+{% endif %}
