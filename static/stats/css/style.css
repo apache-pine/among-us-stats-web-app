@@ -1,0 +1,14 @@
+/* coolors.com */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap');
+
+:root {
+    --primary-color: ;
+    --secondary-color: ;
+    --accent1-color: ;
+    --accent2-color: ;
+    --accent3-color: ;
+
+    --heading-font: "Roboto", Arial, sans-serif;
+    --paragraph-font: "Oswald", Helvetica, sans-serif;
+}
