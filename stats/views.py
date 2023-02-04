@@ -1,10 +1,11 @@
 # Import the necessary packages and modules
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import sys
 import logging
 from among_us_stats import rds_config
 import pymysql
+from .forms import MatchForm, MatchResultsForm
 
 # Database connection info
 name = rds_config.db_username
@@ -107,6 +108,42 @@ def main_rmd(request):
 
 def insert(request):
     return render(request, 'insert.html', {})
+
+
+def insert_match(request):
+    cur.execute("SELECT * FROM among_us_stats.match;")
+    matches = cur.fetchall()
+    cur.execute("SELECT * FROM game_version;")
+    game_versions = cur.fetchall()
+    if request.method == 'POST':
+        form = MatchForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form = MatchForm()
+    return render(request, 'insert_match.html', {'form': form, 'matches': matches, 'game_versions': game_versions})
+
+
+def insert_match_results(request):
+    cur.execute("SELECT * FROM among_us_stats.match;")
+    matches = cur.fetchall()
+    cur.execute("SELECT player_id, player_name, player_alias FROM player;")
+    players = cur.fetchall()
+    cur.execute("SELECT role_id, role_name FROM role ORDER BY role_name;")
+    roles = cur.fetchall()
+    cur.execute("SELECT * FROM modifier ORDER BY modifier_name;")
+    modifiers = cur.fetchall()
+    cur.execute("SELECT * FROM death;")
+    deaths = cur.fetchall()
+    if request.method == 'POST':
+        form = MatchResultsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form = MatchResultsForm()
+    return render(request, 'insert_match_results.html', {'form': form, 'matches': matches, 'players': players, 'roles': roles, 'modifiers': modifiers, 'deaths': deaths})
 
 
 def query(request):

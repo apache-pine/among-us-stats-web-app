@@ -1,0 +1,142 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Among Us Stats - Insert</title>
+    <meta
+      name="description"
+      content="A website to track stats for games of Among Us played by Kyr_Sp33dy and other streamers. The insert page allows you to add a new game to the database."
+    />
+    <link rel="shortcut icon" href="{% static 'stats/images/favicon.png' %}" />
+    <link rel="stylesheet" href="{% static 'stats/css/style.css' %}" />
+  </head>
+  <body>
+    <header>
+      <h1 class="site-name">Among Us Stats</h1>
+      <nav>
+        <ul>
+          <li><a href="/stats/main">Home</a></li>
+          <li><a href="/stats/insert" class="active">Insert</a></li>
+          <li><a href="/stats/query">Query</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h2>Insert into `match_results` Table</h2>
+      <p class="intro-para">
+        This page allows you to insert the results of a game into the database.
+        Please fill out the form below and click submit when done.
+      </p>
+      <div class="current-data-div">
+        <h3>Current Matches in Database</h3>
+        <table>
+          <thead>
+            <tr>
+              <th style="position: sticky; top: 0">Match ID</th>
+              <th style="position: sticky; top: 0">Match Alias</th>
+              <th style="position: sticky; top: 0">Date Played</th>
+              <th style="position: sticky; top: 0">Game Version ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for match in matches %}
+            <tr>
+              <td>{{ match.0 }}</td>
+              <td>{{ match.1 }}</td>
+              <td>{{ match.2 }}</td>
+              <td>{{ match.3 }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <h3>Current Players in Database</h3>
+        <table>
+          <thead>
+            <tr>
+              <th style="position: sticky; top: 0">Player ID</th>
+              <th style="position: sticky; top: 0">Player Name</th>
+              <th style="position: sticky; top: 0">Player Alias</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for player in players %}
+            <tr>
+              <td>{{ player.0 }}</td>
+              <td>{{ player.1 }}</td>
+              <td>{{ player.2 }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <h3>Current Roles in Database</h3>
+        <table>
+          <thead>
+            <tr>
+              <th style="position: sticky; top: 0">Role ID</th>
+              <th style="position: sticky; top: 0">Role Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for role in roles %}
+            <tr>
+              <td>{{ role.0 }}</td>
+              <td>{{ role.1 }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <h3>Current Modifiers in Database</h3>
+        <table>
+          <thead>
+            <tr>
+              <th style="position: sticky; top: 0">Modifier ID</th>
+              <th style="position: sticky; top: 0">Modifier Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for modifier in modifiers %}
+            <tr>
+              <td>{{ modifier.0 }}</td>
+              <td>{{ modifier.1 }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <h3>Current Death Types in Database</h3>
+        <table>
+          <thead>
+            <tr>
+              <th style="position: sticky; top: 0">Death ID</th>
+              <th style="position: sticky; top: 0">Death Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for death in deaths %}
+            <tr>
+              <td>{{ death.0 }}</td>
+              <td>{{ death.1 }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <form method="post">
+        <fieldset>
+          <legend>Match Details</legend>
+          {% csrf_token %} {{ form.as_p }}
+          <input class="input-button" type="submit" value="Submit" />
+        </fieldset>
+      </form>
+    </main>
+    <footer>
+      <h4>Among Us Stats</h4>
+      <p>
+        &copy; <span class="currentYear"></span> | Among Us Stats |
+        <span class="lastModif"></span>
+      </p>
+    </footer>
+    <script src="{% static 'stats/js/main.js' %}"></script>
+  </body>
+</html>

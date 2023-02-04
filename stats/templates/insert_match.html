@@ -1,0 +1,93 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Among Us Stats - Insert</title>
+    <meta
+      name="description"
+      content="A website to track stats for games of Among Us played by Kyr_Sp33dy and other streamers. The insert page allows you to add a new game to the database."
+    />
+    <link rel="shortcut icon" href="{% static 'stats/images/favicon.png' %}" />
+    <link rel="stylesheet" href="{% static 'stats/css/style.css' %}" />
+  </head>
+  <body>
+    <header>
+      <h1 class="site-name">Among Us Stats</h1>
+      <nav>
+        <ul>
+          <li><a href="/stats/main">Home</a></li>
+          <li><a href="/stats/insert" class="active">Insert</a></li>
+          <li><a href="/stats/query">Query</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h2>Insert into `match` Table</h2>
+      <p class="intro-para">
+        This page allows you to insert meta data about a match into the
+        database. Please ensure that the game has not already been added to the
+        database before adding it.
+      </p>
+      <div class="current-data-div">
+        <h3>Current Matches in Database</h3>
+        <table>
+          <thead>
+            <tr>
+              <th style="position: sticky; top: 0">Match ID</th>
+              <th style="position: sticky; top: 0">Match Alias</th>
+              <th style="position: sticky; top: 0">Date Played</th>
+              <th style="position: sticky; top: 0">Game Version ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for match in matches %}
+            <tr>
+              <td>{{ match.0 }}</td>
+              <td>{{ match.1 }}</td>
+              <td>{{ match.2 }}</td>
+              <td>{{ match.3 }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <h3>Current Game Versions in Database</h3>
+        <table>
+          <thead>
+            <tr>
+              <th style="position: sticky; top: 0">Game Version ID</th>
+              <th style="position: sticky; top: 0">Version Name</th>
+              <th style="position: sticky; top: 0">Version</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for game_version in game_versions %}
+            <tr>
+              <td>{{ game_version.0 }}</td>
+              <td>{{ game_version.1 }}</td>
+              <td>{{ game_version.2 }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <h3>Insert New Match</h3>
+      <form method="post">
+        <fieldset>
+          <legend>Match Details</legend>
+          {% csrf_token %} {{ form.as_p }}
+          <input class="input-button" type="submit" value="Submit" />
+        </fieldset>
+      </form>
+    </main>
+    <footer>
+      <h4>Among Us Stats</h4>
+      <p>
+        &copy; <span class="currentYear"></span> | Among Us Stats |
+        <span class="lastModif"></span>
+      </p>
+    </footer>
+    <script src="{% static 'stats/js/main.js' %}"></script>
+  </body>
+</html>
