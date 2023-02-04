@@ -1,14 +1,67 @@
-/* coolors.com */
+/* https://coolors.co/0f5e9a-e53935-000000-fdd835-9cdefb */
 
 @import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap');
 
 :root {
-    --primary-color: ;
-    --secondary-color: ;
-    --accent1-color: ;
-    --accent2-color: ;
-    --accent3-color: ;
+    --primary-color: #0f5e9a;
+    --secondary-color: #e53935;
+    --accent1-color: #000000;
+    --accent2-color: #fdd835;
+    --accent3-color: #9cdefb;
 
     --heading-font: "Roboto", Arial, sans-serif;
     --paragraph-font: "Oswald", Helvetica, sans-serif;
+}
+
+body {
+    background-color: var(--accent3-color);
+    font-family: var(--paragraph-font);
+    font-size: 16px;
+    color: var(--accent1-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+}
+
+header, footer {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.site-name {
+    padding: 1rem;
+    text-align: center;
+}
+
+nav {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 1rem;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    text-align: center;
+}
+
+nav ul li {
+    flex: 1 1 auto;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 1rem 10vw;
+    border: 1px solid white;
+    font-size: 1.25rem;
+    font-family: var(--heading-font);
+}
+
+footer {
+    padding: 1rem;
+    text-align: center;
 }

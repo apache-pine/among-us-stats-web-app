@@ -33,12 +33,8 @@ logger.info("SUCCESS: Connection to RDS MySQL instance succeeded")
 cur = conn.cursor()
 
 
-def say_hello(request):
-    return render(request, 'hello.html', {'title': 'Among Us Stats - Home', 'description': 'A website to track stats for the game Among Us'})
-
-
-def index(request):
-    return render(request, 'index.html')
+def main(request):
+    return render(request, 'main.html', {'title': 'Among Us Stats - Home', 'description': 'A website to track stats for the game Among Us'})
 
 
 def insert(request):

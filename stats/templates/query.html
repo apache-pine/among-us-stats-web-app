@@ -1,11 +1,33 @@
-{% if data %}
-<h1>Stats</h1>
-<ul>
-  {% for item in data %}
-  <li>{{ item }}</li>
-  {% endfor %}
-</ul>
-{% else %}
-<h1>Stats</h1>
-<h1>Data unknown</h1>
-{% endif %}
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}" />
+    <link rel="shortcut icon" href="{% static 'stats/images/favicon.png' %}" />
+    <link rel="stylesheet" href="{% static 'stats/css/style.css' %}" />
+  </head>
+  <body>
+    <header>
+      <h1 class="site-name">Among Us Stats</h1>
+      <nav>
+        <ul>
+          <li><a href="/stats/main">Home</a></li>
+          <li><a href="/stats/insert">Insert</a></li>
+          <li><a href="/stats/query">Query</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main></main>
+    <footer>
+      <h4>Among Us Stats</h4>
+      <p>
+        &copy; <span class="currentYear"></span> | Among Us Stats |
+        <span class="lastModif"></span>
+      </p>
+    </footer>
+    <script src="{% static 'stats/js/main.js' %}"></script>
+  </body>
+</html>

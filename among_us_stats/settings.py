@@ -126,7 +126,6 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    '/static/stats/',
 ]
 
 # Default primary key field type
