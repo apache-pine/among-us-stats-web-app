@@ -4,11 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Among Us Stats - Query</title>
-    <meta
-      name="description"
-      content="A website to track stats for games of Among Us played by Kyr_Sp33dy and other streamers. The query page allows you to query the database for specific data about games, players, roles, etc."
-    />
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}" />
     <link rel="shortcut icon" href="{% static 'stats/images/favicon.png' %}" />
     <link rel="stylesheet" href="{% static 'stats/css/style.css' %}" />
   </head>
@@ -17,13 +14,31 @@
       <h1 class="site-name">Among Us Stats</h1>
       <nav>
         <ul>
-          <li><a href="/stats/main">Home</a></li>
+          <li><a href="/stats/main" class="active">Home</a></li>
           <li><a href="/stats/insert">Insert</a></li>
-          <li><a href="/stats/query" class="active">Query</a></li>
+          <li><a href="/stats/query">Query</a></li>
         </ul>
       </nav>
     </header>
-    <main></main>
+    <main>
+      <h2 class="main-extra-header">{{ header }}</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="position: sticky; top: 0">{{ table_header1 }}</th>
+            <th style="position: sticky; top: 0">{{ table_header2 }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in data %}
+          <tr>
+            <td>{{ row.0 }}</td>
+            <td>{{ row.1 }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </main>
     <footer>
       <h4>Among Us Stats</h4>
       <p>

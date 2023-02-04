@@ -1,8 +1,8 @@
 # Overview
 
 <!-- To-do in this section:
-- Talk about what I am trying to accomplish as a data scientist to further my learning. 
-- Provide a description of the web app that I wrote. 
+- Talk about what I am trying to accomplish as a data scientist to further my learning.
+- Provide a description of the web app that I wrote.
 - Describe how to start a test server on your computer and what website to open up to see the first page of the app.
 - Describe my purpose for writing this software.
 - Provide a link to my YouTube demonstration.
@@ -21,15 +21,17 @@
 
 # Useful Websites
 
-<!-- Make a list of websites that I found helpful in this project -->
-
-* [Web Site Name](http://url.link.goes.here)
-* [Web Site Name](http://url.link.goes.here)
+- [Django Documentation](https://docs.djangoproject.com/en/4.1/)
+- [PyMySQL Documentation](https://pymysql.readthedocs.io/en/latest/index.html)
+- [Python Documentation](https://docs.python.org/3/)
+- [TutorialsPoint Django Tutorial](https://www.tutorialspoint.com/django/index.htm)
+- [Python Django Tutorial for Beginners](https://www.youtube.com/watch?v=rHux0gMZ3Eg&ab_channel=ProgrammingwithMosh)
+- [Python Django Web Framework - Full Course for Beginners](https://www.youtube.com/watch?v=F5mRW0jo-U4)
 
 # Future Work
 
 <!-- Make a list of things that I need to fix, improve, and add in the future. -->
 
-* Item 1
-* Item 2
-* Item 3
+- Item 1
+- Item 2
+- Item 3

@@ -4,8 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ title }}</title>
-    <meta name="description" content="{{ description }}" />
+    <title>Among Us Stats - Insert</title>
+    <meta
+      name="description"
+      content="A website to track stats for games of Among Us played by Kyr_Sp33dy and other streamers. The insert page allows you to add a new game to the database."
+    />
     <link rel="shortcut icon" href="{% static 'stats/images/favicon.png' %}" />
     <link rel="stylesheet" href="{% static 'stats/css/style.css' %}" />
   </head>
@@ -15,7 +18,7 @@
       <nav>
         <ul>
           <li><a href="/stats/main">Home</a></li>
-          <li><a href="/stats/insert">Insert</a></li>
+          <li><a href="/stats/insert" class="active">Insert</a></li>
           <li><a href="/stats/query">Query</a></li>
         </ul>
       </nav>

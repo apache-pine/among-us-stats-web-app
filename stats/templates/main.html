@@ -4,8 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ title }}</title>
-    <meta name="description" content="{{ description }}" />
+    <title>Among Us Stats - Home</title>
+    <meta
+      name="description"
+      content="A website to track stats for games of Among Us played by Kyr_Sp33dy and other streamers. The main page displays the most recent games played as well as some basic stats."
+    />
     <link rel="shortcut icon" href="{% static 'stats/images/favicon.png' %}" />
     <link rel="stylesheet" href="{% static 'stats/css/style.css' %}" />
   </head>
@@ -14,13 +17,93 @@
       <h1 class="site-name">Among Us Stats</h1>
       <nav>
         <ul>
-          <li><a href="/stats/main">Home</a></li>
+          <li><a href="/stats/main" class="active">Home</a></li>
           <li><a href="/stats/insert">Insert</a></li>
           <li><a href="/stats/query">Query</a></li>
         </ul>
       </nav>
     </header>
-    <main></main>
+    <main>
+      <div class="last-game-div def-div">
+        <h2>Summary of The Most Recent Game</h2>
+        <table class="last-game-table">
+          <thead>
+            <tr>
+              <th style="position: sticky; top: 0">Match ID</th>
+              <th style="position: sticky; top: 0">Player Name</th>
+              <th style="position: sticky; top: 0">Role</th>
+              <th style="position: sticky; top: 0">Second Role</th>
+              <th style="position: sticky; top: 0">Team</th>
+              <th style="position: sticky; top: 0">Role Type</th>
+              <th style="position: sticky; top: 0">Modifier</th>
+              <th style="position: sticky; top: 0">Death</th>
+              <th style="position: sticky; top: 0">Killed By</th>
+              <th style="position: sticky; top: 0">Did Win?</th>
+              <th style="position: sticky; top: 0">Date Played</th>
+              <th style="position: sticky; top: 0">Match Alias</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in last_game %}
+            <tr>
+              <td>{{ row.0 }}</td>
+              <td>{{ row.1 }}</td>
+              <td>{{ row.2 }}</td>
+              <td>{{ row.3 }}</td>
+              <td>{{ row.4 }}</td>
+              <td>{{ row.5 }}</td>
+              <td>{{ row.6 }}</td>
+              <td>{{ row.7 }}</td>
+              <td>{{ row.8 }}</td>
+              <td>{{ row.9 }}</td>
+              <td>{{ row.10 }}</td>
+              <td>{{ row.11 }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="the-most-div def-div">
+        <h2>Players and Roles with The Most...</h2>
+        <div id="pmw">
+          <a href="/stats/main/pmw"><h3>Player with the Most Wins</h3></a>
+          <p>{{ pmw.0 }} has won {{ pmw.1 }} games.</p>
+        </div>
+        <div id="pml">
+          <a href="/stats/main/pml"><h3>Player with the Most Losses</h3></a>
+          <p>{{ pml.0 }} has lost {{ pml.1 }} games.</p>
+        </div>
+        <div id="pmk">
+          <a href="/stats/main/pmk"><h3>Player with the Most Kills</h3></a>
+          <p>{{ pmk.0 }} has killed {{ pmk.1 }} people.</p>
+        </div>
+        <div id="pmd">
+          <a href="/stats/main/pmd"><h3>Player with the Most Deaths</h3></a>
+          <p>{{ pmd.0 }} has died {{ pmd.1 }} times.</p>
+        </div>
+        <div id="rmw">
+          <a href="/stats/main/rmw"><h3>Role with the Most Wins</h3></a>
+          <p>{{ rmw.0 }} has won {{ rmw.1 }} games.</p>
+        </div>
+        <div id="rml">
+          <a href="/stats/main/rml"><h3>Role with the Most Losses</h3></a>
+          <p>{{ rml.0 }} has lost {{ rml.1 }} games.</p>
+        </div>
+        <div id="rmk">
+          <a href="/stats/main/rmk"><h3>Role with the Most Kills</h3></a>
+          <p>{{ rmk.0 }} has killed {{ rmk.1 }} people.</p>
+        </div>
+        <div id="rmd">
+          <a href="/stats/main/rmd"><h3>Role with the Most Deaths</h3></a>
+          <p>{{ rmd.0 }} has died {{ rmd.1 }} times.</p>
+        </div>
+        <p class="note">
+          <strong>Note:</strong> Some of these positions have ties, in which
+          case the player whose name comes first alphabetically is listed. Click
+          the title of any position to see the full list.
+        </p>
+      </div>
+    </main>
     <footer>
       <h4>Among Us Stats</h4>
       <p>
