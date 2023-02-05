@@ -3,9 +3,11 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import sys
 import logging
+from django.db.models import Q
 from among_us_stats import rds_config
 import pymysql
-from .forms import MatchForm, MatchResultsForm
+from .forms import MatchForm, MatchResultsForm, PlayerForm
+from .models import Match, MatchResults, Player, Role, RoleType, Team, GameVersion, Death
 
 # Database connection info
 name = rds_config.db_username
@@ -119,7 +121,7 @@ def insert_match(request):
         form = MatchForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('/stats/insert/')
     else:
         form = MatchForm()
     return render(request, 'insert_match.html', {'form': form, 'matches': matches, 'game_versions': game_versions})
@@ -140,11 +142,18 @@ def insert_match_results(request):
         form = MatchResultsForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('/stats/insert/')
     else:
         form = MatchResultsForm()
     return render(request, 'insert_match_results.html', {'form': form, 'matches': matches, 'players': players, 'roles': roles, 'modifiers': modifiers, 'deaths': deaths})
 
 
 def query(request):
-    return render(request, 'query.html', {})
+    if request.method == 'POST':
+        player_name = request.POST.get('player_name')
+        player_list = Player.objects.filter(
+            Q(player_name__icontains=player_name) | Q(player_alias__icontains=player_name))
+        return render(request, 'results.html', {'player_list': player_list})
+    else:
+        form = PlayerForm()
+        return render(request, 'query.html', {'form': form})

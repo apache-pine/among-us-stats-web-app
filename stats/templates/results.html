@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Among Us Stats - Query</title>
+    <title>Among Us Stats - Results</title>
     <meta
       name="description"
       content="A website to track stats for games of Among Us played by Kyr_Sp33dy and other streamers. The query page allows you to query the database for specific data about games, players, roles, etc."
@@ -24,11 +24,22 @@
       </nav>
     </header>
     <main>
-      <h2>Query</h2>
-      <form method="post">
-        {% csrf_token %} {{ form.as_p }}
-        <button type="submit">Search</button>
-      </form>
+      {% if player_list %}
+      <table>
+        <tr>
+          <th>Player ID</th>
+          <th>Player Name</th>
+          <th>Player Alias</th>
+        </tr>
+        {% for player in player_list %}
+        <tr>
+          <td>{{ player.player_id }}</td>
+          <td>{{ player.player_name }}</td>
+          <td>{{ player.player_alias }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% else %} No results found. {% endif %}
     </main>
     <footer>
       <h4>Among Us Stats</h4>
