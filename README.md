@@ -8,7 +8,7 @@ The secondary, and perhaps more profound and important purpose of this app, was 
 
 The app is easily run from a computer using Django and the command prompt or a terminal in an IDE. Once the app is installed, a user can start the server using the following command: `python manage.py runserver`. Once the server is running, the user can navigate to the first page of the app by opening a web browser and navigating to `http://127.0.0.1:8000/stats/main/`. The user can then navigate through the app by clicking on the links provided on each page in the navigation bar. Below is a link to a video demonstration starting and navigating through the app.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/7vZoAnZJsyg)
 
 # Web Pages
 
